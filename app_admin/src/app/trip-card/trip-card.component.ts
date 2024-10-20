@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Trip } from '../models/trip';
@@ -13,6 +13,7 @@ import { Trip } from '../models/trip';
 export class TripCardComponent implements OnInit{
 
   @Input ('trip') trip: any;
+  @Output() delete: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(private router: Router) {}
 
@@ -24,6 +25,10 @@ export class TripCardComponent implements OnInit{
     localStorage.removeItem('tripCode');
     localStorage.setItem('tripCode', trip.code);
     this.router.navigate(['edit-trip'])
+  }
+
+  onDelete(): void {
+    this.delete.emit(this.trip.tripCode);
   }
 
 }
