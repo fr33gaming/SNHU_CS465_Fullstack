@@ -49,19 +49,6 @@ export class TripListingComponent implements OnInit {
             }
           })
         }
-  
-        private onDeleteTrip(tripCode: string) : void {
-          this.tripDataService.deleteTrip(tripCode)
-          .subscribe({
-            next: () => {
-              this.trips = this.trips.filter(trip => trip.code !== tripCode);
-              console.log("Deleted successfully");
-            },
-            error: (error: any) => {
-              console.log('Error: ' + error);
-            }
-          })
-        }
 
   ngOnInit(): void {
      console.log('ngOnInit');
