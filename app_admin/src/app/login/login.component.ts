@@ -22,7 +22,7 @@ export class LoginComponent {
     name: '',
     email: '',
     password: ''
-  };
+  }
 
   constructor(
     private router: Router,

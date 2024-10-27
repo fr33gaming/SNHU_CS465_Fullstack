@@ -6,6 +6,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const handlebars = require('hbs');
 
 var indexRouter = require('./app_server/routes/index');
 var usersRouter = require('./app_server/routes/users');
@@ -13,14 +14,11 @@ var travelRouter = require('./app_server/routes/travel');
 var roomsRouter = require('./app_server/routes/rooms');
 var apiRouter = require('./app_api/routes/index');
 
-var handlebars  = require('hbs');
-
-// Wire in our authentication module
-var passport = require('passport');
-require('./app_api/config/passport');
-
 // Bring in the database
 require('./app_api/models/db');
+
+var passport = require('passport');
+require('./app_api/config/passport')
 
 var app = express();
 

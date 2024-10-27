@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from "@angular/forms";
+import { Router } from "@angular/router";
 import { TripDataService } from '../services/trip-data.service';
 
 @Component({
@@ -11,18 +11,17 @@ import { TripDataService } from '../services/trip-data.service';
   templateUrl: './add-trip.component.html',
   styleUrl: './add-trip.component.css'
 })
-
 export class AddTripComponent implements OnInit {
-  public addForm!: FormGroup; 
+  public addForm!: FormGroup;
   submitted = false;
 
-constructor (
+constructor(
   private formBuilder: FormBuilder,
   private router: Router,
   private tripService: TripDataService
-) {}
+) { }
 
-ngOnInit(): void {
+ngOnInit() {
   this.addForm = this.formBuilder.group({
     _id: [],
     code: ['', Validators.required],
@@ -46,11 +45,11 @@ public onSubmit() {
         this.router.navigate(['']);
       },
       error: (error: any) => {
-        console.log(error);
-    }});
+        console.log('Error: ' + error);
+      }});
+    }
   }
-}
-// get the form short nameto access the form fields
+  
+// get the form short name to access the form fields
 get f() { return this.addForm.controls; }
-
 }
